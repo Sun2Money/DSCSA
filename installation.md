@@ -8,13 +8,15 @@ These [instructions](https://docs.openzeppelin.com/learn/) were a great help in 
     - npm init -y
 3. Install Truffle locally within your project to avoid upgrade problems (Hardhat is an alternative)
     - npm install --save-dev truffle
+        - Add node_modules to .gitignore when prompted 
     - npx truffle init
+        - Only once!
 4. Add source control (GitHub) with key information included in .gitignore (i.e. build)
 5. Install @openzeppelin/contracts
     - npm install --save-dev @openzeppelin/contracts
 6. Create contract .sol file inheriting from Owner with the Box example
 7. Compile the example before making any changes just to make sure your environment is setup correctly
-    - npx truffle compile
+    - npx truffle compile ./contracts/DSCSA.sol > test.log
 8. Add build directory to .gitignore so private keys are not uploaded to GitHub
 9. Make changes to example file for DSCSA Blockchain and compile
 10. Setup local blockchain with ganache

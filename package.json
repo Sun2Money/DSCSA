@@ -1,0 +1,24 @@
+{
+  "name": "DSCSA",
+  "version": "1.0.0",
+  "description": "The goal of this repository is to provide an example implementation of the DSCSA in Solidity/Truffle.  The DSCSA is a [FDA regulation](https://www.fda.gov/drugs/drug-supply-chain-security-act-dscsa/drug-supply-chain-security-act-law-and-policies) to track drugs through the supply chain.  The FDA completed a DSCSA blockchain pilot in 2020: [FDA Blockchain Pilot Report](https://www.ibm.com/downloads/cas/9V2LRYG5).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sun2Money/DSCSA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sun2Money/DSCSA/issues"
+  },
+  "homepage": "https://github.com/Sun2Money/DSCSA#readme",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "truffle": "^5.3.5"
+  }
+}
