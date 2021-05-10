@@ -8,7 +8,7 @@ These [instructions](https://docs.openzeppelin.com/learn/) were a great help in 
     - npm init -y
 3. Install Truffle locally within your project to avoid upgrade problems (Hardhat is an alternative)
     - npm install --save-dev truffle
-        - Add node_modules to .gitignore when prompted 
+        - Add node_modules to .gitignore when prompted
     - npx truffle init
         - Only once!
 4. Add source control (GitHub) with key information included in .gitignore (i.e. build)
@@ -20,13 +20,12 @@ These [instructions](https://docs.openzeppelin.com/learn/) were a great help in 
 8. Add build directory to .gitignore so private keys are not uploaded to GitHub
 9. Make changes to example file for DSCSA Blockchain and compile
 10. Setup local blockchain with ganache
-    - npm install --save-dev ganache-cli
-    - npx ganache-cli --deterministic
-    - Create migrations' file (2_deploy.js)
+    - install GUI Ganache if needed
     - Add Ganache network to truffle configuration file (truffle-config.js)
+    - Create migrations' file (2_deploy.js)
     - npx truffle migrate --network development
     - npx truffle console --network development truffle(development)> DSCSA = await DSCSA.deployed()
-undefined
+undefined ???
 11. Build [Unit Tests](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/test): install environment, helpers, and Chai for javascript assertions
     - npm install --save-dev @openzeppelin/test-environment
     - npm install --save-dev @openzeppelin/test-helpers
