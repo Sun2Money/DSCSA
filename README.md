@@ -62,7 +62,7 @@ Reference [OpenZeppelin](https://docs.openzeppelin.com/learn/) for details in se
 2. npx truffle init
 3. npx truffle compile ./test/DSCSA.test.sol > test.log
 4. npx truffle migrate --network development
-5. npx truffle test ./test/DSCSA.test.sol > test.log
+5. npx truffle test ./test/DSCSA.test.js > test.log
 
 ### Example Code
 
