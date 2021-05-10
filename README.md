@@ -80,14 +80,6 @@ The unit tests for each function are organized as follows:
 
 solc --userdoc --devdoc DSSCSA.sol
 
-## Glossary
-
-| Term      | Definition |
-| :---      | --- |
-| `ABI`     | The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification. The encoding is not self describing and thus requires a schema in order to decode.|
-| `AI`      | Application identifiers |
-| `3PLs`    | third-party logistics provider |
-
 ## Miscellaneous Notes
 
 ### NPM
