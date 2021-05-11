@@ -2,7 +2,7 @@
 // Load dependencies
 const { constants, expectEvent, expectRevert } = require('@openzeppelin/test-helpers');
 const { ZERO_ADDRESS } = constants;
-const { expect } = require('chai');
+const { expect, assert } = require('chai');
 
 // Load compiled artifacts
 const DSCSA = artifacts.require('DSCSA');
@@ -17,31 +17,26 @@ contract('DSCSA', function () {
   // Test case
   describe('Setters and Getters', function () {
     // Set Test Variables
-    var testHolderAddress; 
-    var testGlobalTradeItemNumber;
+    var testHolderAddress = this.DSCSA.Owner(); 
+    var testGlobalTradeItemNumber = 855245005019;
     var testExpirationDate;
-    var testLotNumber;
-    var testSerialNumber;
+    var testLot = 123; //'xyz123'
+    var testSerialNumber = 477018182632;
     
-    it('retrieve returns a value previously stored', async function () {
+    let date = (new Date(2025, 0, 1)).getTime();
+    let testExpirationDate = date / 1000;
 
+    it('sets values', async function () {
+      await this.DSCSA.store(testHolderAddress, testGlobalTradeItemNumber, testExpirationDate, testLot, testSerialNumber);
+      assert(await this.DSCSA.Owner()>0, 'owner is empty');
+    });
 
-      // Store values
-      let date = (new Date(2025, 0, 1)).getTime();
-      let expirationDateInUnixTimestamp = date / 1000;
-      
-
-      await this.DSCSA.store(42, 42, expirationDateInUnixTimestamp, 42, 42);
-  
-      // Test if the returned value is the same one
-      // Note that we need to use strings to compare the 256 bit integers
+    it('gets values', async function () {
       const result = await this.DSCSA.retrieve();
-      const {0: strValue, 1: boolValue, 2: intValue} = result;
+      const {0: rtnHolderAddress, 1: rtnGlobalTradeItemNumber, 2: rtnExpirationDate, 3: rtnLot, 4: rtnSerialNumber} = result;
 
-      console.log(strValue); // "data"
-      console.log(boolValue); // true
-      console.log(intValue); // 15
-
+      console.log('rtnHolderAddress: ' + str(rtnHolderAddress)); 
+      assert(rtnHolderAddress=testHolderAddress, 'holder addresses different than set');
 
     });
   });
