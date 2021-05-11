@@ -11,10 +11,10 @@ import "node_modules/@openzeppelin/contracts/access/Ownable.sol";
 /// @notice You can use this contract for only the most basic simulation
 /// @dev    A simple example of a Blockchain inheriting Ownable, MAH in this problem domin
 contract DSCSA is Ownable {
-    uint    internal  holderAddress; 
+    address internal  holderAddress; 
     uint    internal  globalTradeItemNumber;
     uint    internal  expirationDate;
-    bytes32 internal  lot;
+    bytes20 internal  lot;
     uint    internal  serialNumber;
 
     // The onlyOwner modifier restricts who can call the store function
@@ -25,13 +25,13 @@ contract DSCSA is Ownable {
     /// @param newSerialNumber          Package Serrial Number
 
     function store(
-        uint newHolderAddress,
+        address newHolderAddress,
         uint newGlobalTradeItemNumber,
         uint newExpirationDate,
-        bytes32 newLot,
+        bytes20 newLot,
         uint newSerialNumber
     )
-        public
+        public onlyOwner
     {
         holderAddress           = newHolderAddress;
         globalTradeItemNumber   = newGlobalTradeItemNumber;
@@ -40,8 +40,81 @@ contract DSCSA is Ownable {
         serialNumber            = newSerialNumber;
     }
 
-    function retrieve() external view returns (uint, uint, uint, bytes32, uint)
+    function retrieve() public view returns (address, uint, uint, bytes20, uint)
     {
         return (holderAddress, globalTradeItemNumber, expirationDate, lot, serialNumber);
     }
+
+    ///--------------------------------------------------------------------------------
+    /// @dev Stores HolderAddress which is the Trading partner in possession of drug
+    /// @param newHolderAddress Trading partner in possession of drug
+    function setHolderAddress(address newHolderAddress) public onlyOwner
+    {
+        holderAddress = newHolderAddress;
+    }   
+    
+    /// @dev Returns HolderAddress which is the Trading partner in possession of drug
+    function getHolderAddress() public view returns (address) 
+    {
+        return holderAddress;
+    }        
+
+    ///--------------------------------------------------------------------------------
+    /// @dev Stores GlobalTradeItemNumber which is a Unique ID
+    /// @param newGlobalTradeItemNumber Unique ID
+    function setGlobalTradeItemNumber(uint newGlobalTradeItemNumber) public onlyOwner
+    {
+        globalTradeItemNumber = newGlobalTradeItemNumber;
+    }   
+    
+    /// @dev Returns GlobalTradeItemNumber 
+    function getGlobalTradeItemNumber() public view returns (uint) 
+    {
+        return globalTradeItemNumber;
+    }       
+
+    ///--------------------------------------------------------------------------------
+    /// @dev Stores ExpirationDate 
+    /// @param newExpirationDate Date package expires
+    function setExpirationDate(uint newExpirationDate) public onlyOwner
+    {
+        expirationDate = newExpirationDate;
+    }   
+    
+    /// @dev Returns ExpirationDate which is the date the drug will expire
+    function getExpirationDate() public view returns (uint) 
+    {
+        return expirationDate;
+    }       
+
+    //                             = newLot;
+    ///--------------------------------------------------------------------------------
+    /// @dev Stores lot 
+    /// @param newLot lot that drug was made in
+    function setLot(bytes20 newLot) public onlyOwner
+    {
+        lot = newLot;
+    }   
+    
+    /// @dev Returns lot that drug was made in
+    function getLot() public view returns (bytes20) 
+    {
+        return lot;
+    }       
+
+
+    ///--------------------------------------------------------------------------------
+    /// @dev Stores SerialNumber which is a Universal Unique ID (UUID)
+    /// @param newSerialNumber Unique ID
+    function setSerialNumber(uint newSerialNumber) public onlyOwner
+    {
+        serialNumber = newSerialNumber;
+    }   
+    
+    /// @dev Returns SerialNumber which is the UUID of the drug package
+    function getSerialNumber() public view returns (uint) 
+    {
+        return serialNumber;
+    }       
+
 }
