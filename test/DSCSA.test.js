@@ -8,19 +8,19 @@ const { expect, assert } = require('chai');
 // Load compiled artifacts
 const DSCSA = artifacts.require('DSCSA');
 
-// Start test block
+// Start test block: lot = 'xyz123' (maximum is 20 characters)
 contract('DSCSA', function () {
     // Set Test Variables
     var testHolderAddress; 
     var testGlobalTradeItemNumber = 855245005019;
     var testExpirationDate;
-    var testLot = new BN('xyz123', 16);
+    var testLot = new BN(0x78797a313233, 16);
     var testSerialNumber = 477018182632;
     
     let date = (new Date(2025, 0, 1)).getTime();
     testExpirationDate = date / 1000;
 
-    var rtnHolderAddress;
+    //var rtnHolderAddress;
 
   beforeEach(async function () {
     // Deploy a new DSCSA contract for each test
@@ -55,8 +55,14 @@ contract('DSCSA', function () {
   });
   
   it('set/get lot', async function () {
-    console.log('testLot: ' + testLot.toString(10));
-    this.DSCSA.setLot(testLot);
+    let byteLength = testLot.byteLength();
+    console.log('\n');
+    console.log('testLot.toString(10): ' + testLot.toString(10, byteLength));
+    console.log('testLot.toString(16): ' + testLot.toString(16, byteLength));
+    console.log('testLot.byteLength(): ' + byteLength);
+    console.log('\n');
+
+    await this.DSCSA.setLot(testLot.toArray('le', 20));
     let rtnLot = await this.DSCSA.getLot();
     assert( testLot == rtnLot, 'lot != set');    
   });   
