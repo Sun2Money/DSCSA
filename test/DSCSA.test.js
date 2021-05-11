@@ -7,6 +7,7 @@ const { expect, assert } = require('chai');
 // Load compiled artifacts
 const DSCSA = artifacts.require('DSCSA');
 var Web3 = require('web3');
+var web3 = new Web3('http://localhost:8545');
 
 // Start test block
 contract('DSCSA', function () {
@@ -21,7 +22,7 @@ contract('DSCSA', function () {
     var testHolderAddress; 
     var testGlobalTradeItemNumber = 855245005019;
     var testExpirationDate;
-    var testLot = Web3.toAscii("0x657468657265756d000000000000000000000000000000000000000000000000");
+    var testLot = 0x657468657265756d000000000000000000000000000000000000000000000000;
     var testSerialNumber = 477018182632;
     
     let date = (new Date(2025, 0, 1)).getTime();
@@ -35,7 +36,7 @@ contract('DSCSA', function () {
 
     it('gets values', async function () {
       const result = await this.DSCSA.retrieve();
-      console.log('result[holderAddress]: ' + result[holderAddress]);
+      console.log('result[0]: ' + result[0]);
       console.log('result[1]: ' + result[1]);
       console.log('result[2]: ' + result[2]);
       console.log('result[3]: ' + result[3]);
