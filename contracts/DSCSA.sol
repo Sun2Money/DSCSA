@@ -14,33 +14,33 @@ contract DSCSA is Ownable {
     uint    internal  holderAddress; 
     uint    internal  globalTradeItemNumber;
     uint    internal  expirationDate;
-    uint    internal  lot;
+    bytes32 internal  lot;
     uint    internal  serialNumber;
 
     // The onlyOwner modifier restricts who can call the store function
-    /// @param newholderAddress         Trading partner in possession of drug
+    /// @param newHolderAddress         Trading partner in possession of drug
     /// @param newGlobalTradeItemNumber Unique ID
     /// @param newExpirationDate        Product Expiration Date
     /// @param newLot                   Product Lot (batch)
     /// @param newSerialNumber          Package Serrial Number
 
     function store(
-        uint newholderAddress,
+        uint newHolderAddress,
         uint newGlobalTradeItemNumber,
         uint newExpirationDate,
-        uint newLot,
+        bytes32 newLot,
         uint newSerialNumber
     )
-        public onlyOwner
+        public
     {
-        holderAddress           = newholderAddress;
+        holderAddress           = newHolderAddress;
         globalTradeItemNumber   = newGlobalTradeItemNumber;
         expirationDate          = newExpirationDate;
         lot                     = newLot;
         serialNumber            = newSerialNumber;
     }
 
-    function retrieve() public view returns (uint, uint, uint, uint, uint) 
+    function retrieve() external view returns (uint, uint, uint, bytes32, uint)
     {
         return (holderAddress, globalTradeItemNumber, expirationDate, lot, serialNumber);
     }

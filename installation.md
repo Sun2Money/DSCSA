@@ -30,5 +30,6 @@ undefined ???
     - npm install --save-dev @openzeppelin/test-environment
     - npm install --save-dev @openzeppelin/test-helpers
     - npm install --save-dev chai
+    - npm install web3
     - create one solidity or javascript test file per contract
     - npx truffle test > test.log
