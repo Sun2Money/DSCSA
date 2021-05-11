@@ -14,7 +14,7 @@ contract DSCSA is Ownable {
     address internal  holderAddress; 
     uint    internal  globalTradeItemNumber;
     uint    internal  expirationDate;
-    bytes20 internal  lot;
+    string  internal  lot;
     uint    internal  serialNumber;
 
     // The onlyOwner modifier restricts who can call the store function
@@ -28,7 +28,7 @@ contract DSCSA is Ownable {
         address newHolderAddress,
         uint newGlobalTradeItemNumber,
         uint newExpirationDate,
-        bytes20 newLot,
+        string memory newLot,
         uint newSerialNumber
     )
         public onlyOwner
@@ -40,7 +40,7 @@ contract DSCSA is Ownable {
         serialNumber            = newSerialNumber;
     }
 
-    function retrieve() public view returns (address, uint, uint, bytes20, uint)
+    function retrieve() public view returns (address, uint, uint, string memory, uint)
     {
         return (holderAddress, globalTradeItemNumber, expirationDate, lot, serialNumber);
     }
@@ -91,13 +91,13 @@ contract DSCSA is Ownable {
     ///--------------------------------------------------------------------------------
     /// @dev Stores lot 
     /// @param newLot lot that drug was made in
-    function setLot(bytes20 newLot) public onlyOwner
+    function setLot(string memory newLot) public onlyOwner
     {
         lot = newLot;
     }   
     
     /// @dev Returns lot that drug was made in
-    function getLot() public view returns (bytes20) 
+    function getLot() public view returns (string memory) 
     {
         return lot;
     }       

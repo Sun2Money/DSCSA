@@ -14,7 +14,7 @@ contract('DSCSA', function () {
     var testHolderAddress; 
     var testGlobalTradeItemNumber = 855245005019;
     var testExpirationDate;
-    var testLot = new BN(0x78797a313233, 16);
+    var testLot = 'xyz123';
     var testSerialNumber = 477018182632;
     
     let date = (new Date(2025, 0, 1)).getTime();
@@ -55,14 +55,7 @@ contract('DSCSA', function () {
   });
   
   it('set/get lot', async function () {
-    let byteLength = testLot.byteLength();
-    console.log('\n');
-    console.log('testLot.toString(10): ' + testLot.toString(10, byteLength));
-    console.log('testLot.toString(16): ' + testLot.toString(16, byteLength));
-    console.log('testLot.byteLength(): ' + byteLength);
-    console.log('\n');
-
-    await this.DSCSA.setLot(testLot.toArray('le', 20));
+    await this.DSCSA.setLot(testLot);
     let rtnLot = await this.DSCSA.getLot();
     assert( testLot == rtnLot, 'lot != set');    
   });   
