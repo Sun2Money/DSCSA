@@ -1,0 +1,29 @@
+Using network 'development'.
+
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+[0m[0m
+[0m  Contract: dscsa set/get tests[0m
+undefined
+  [32m  √[0m[90m set/get holderAddress[0m[31m (568ms)[0m
+undefined
+  [32m  √[0m[90m set/get globalTradeItemNumber[0m[31m (373ms)[0m
+undefined
+  [32m  √[0m[90m set/get expirationDate[0m[31m (427ms)[0m
+undefined
+  [32m  √[0m[90m set/get serialNumber[0m[31m (868ms)[0m
+undefined
+  [32m  √[0m[90m set/get lot[0m[31m (373ms)[0m
+undefined
+  [32m  √[0m[90m store/retrieve[0m[31m (631ms)[0m
+
+[0m  Contract: dscsa MAH logs all supply chain activity[0m
+  [32m  √[0m[90m Owner (MAH) documents supply chain activity[0m[31m (751ms)[0m
+
+
+[92m [0m[32m 7 passing[0m[90m (7s)[0m
+
